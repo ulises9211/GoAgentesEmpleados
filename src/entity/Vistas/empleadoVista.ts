@@ -7,7 +7,6 @@ import { EstadoEscolaridad } from "../EstadoEscolaridad";
 import { MedioTraslado } from "../MedioTraslado";
 import { Pais } from "../Pais";
 
-
 @ViewEntity({ 
     expression: (connection: Connection) => connection.createQueryBuilder()
         .select("empleado.id", "id")
@@ -17,7 +16,7 @@ import { Pais } from "../Pais";
         .addSelect("estado_civil.descripcion", "estado_civil") 
         .addSelect("estado_escolaridad.nivel", "estado_escolaridad") 
         .addSelect("medio_traslado.id", "medio_traslado") 
-        .addSelect("pais.nombre", "pais") 
+        .addSelect("pais.nombre", "pais")
         .from(Empleado, "empleado")
         .leftJoin(Escolaridad, "escolaridad", "escolaridad.id = empleado.IdEscolaridad")
         .leftJoin(Estacion, "estacion", "estacion.id = empleado.IdEstacion")

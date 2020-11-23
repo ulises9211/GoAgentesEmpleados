@@ -8,12 +8,19 @@ import {Pais} from "./Pais";
 import {Colonia} from "./Colonia";
 import {Puesto} from "./Puesto";
 import {Usuario} from "./Usuario";
+import {Etapa} from "./Etapa";
+import {SolicitudRRHH} from "./SolicitudRRHH";
+import {EstadoRH} from "./EstadoRH";
 
 @Entity()
 export class Empleado {
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @ManyToOne(() => Etapa)
+    @JoinColumn({ name: "IdEtapa" })
+    Etapa: Etapa;
 
     @ManyToOne(() => Escolaridad)
     @JoinColumn({ name: "IdEscolaridad" })
@@ -22,6 +29,10 @@ export class Empleado {
     @ManyToOne(() => Estacion)
     @JoinColumn({ name: "IdEstacion" })
     Estacion: Estacion;
+
+    @ManyToOne(() => EstadoRH)
+    @JoinColumn({ name: "IdEstadoRH" })
+    EstadoRH: EstadoRH;
 
     @ManyToOne(() => EstadoCivil)
     @JoinColumn({ name: "IdEstadoCivil" })
@@ -34,6 +45,10 @@ export class Empleado {
     @ManyToOne(() => MedioTraslado)
     @JoinColumn({ name: "IdMedioTraslado" })
     MedioTraslado: MedioTraslado;
+
+    @ManyToOne(() => SolicitudRRHH)
+    @JoinColumn({ name: "IdSolicitudRRHH" })
+    SolicitudRRHH: SolicitudRRHH;
 
     @ManyToOne(() => Pais)
     @JoinColumn({ name: "IdPais" })
@@ -58,6 +73,9 @@ export class Empleado {
     curp: string;
 
     @Column()
+    genero: string;
+
+    @Column()
     cp: number;
 
     @ManyToOne(() => Colonia)
@@ -66,17 +84,6 @@ export class Empleado {
 
     @Column()
     calle: string;
-
-    @Column()
-    genero: string;
-
-    @ManyToOne(() => Puesto)
-    @JoinColumn({ name: "IdPuesto" })
-    Puesto: Puesto;
-
-    @ManyToOne(() => Usuario)
-    @JoinColumn({ name: "IdUsuario" })
-    Usuario: Usuario;
 
     @Column()
     numeroExterior: string;
@@ -88,25 +95,8 @@ export class Empleado {
     telefonoFijo: number;
 
     @Column()
-    sueldoDiario: number;
-
-    @Column()
     telefonoMovil: number;
 
-    @Column()
-    telefonoOficina: number;
-
-    @Column()
-    sueldoMensual: number;
-
-    
-    @Column()
-    ctaClave: number;
-
-    
-    @Column()
-    imss: number;
-    
     @Column()
     fechaCreacion: Date;
 
@@ -118,17 +108,40 @@ export class Empleado {
 
     @Column()
     recontratable: boolean;
+
+    @Column()
+    detalleBaja: string;
+
+    @Column()
+    fechaRegistroBaja: Date;
+
+    /*@ManyToOne(() => Puesto)
+    @JoinColumn({ name: "IdPuesto" })
+    Puesto: Puesto;
+
+    @ManyToOne(() => Usuario)
+    @JoinColumn({ name: "IdUsuario" })
+    Usuario: Usuario;
+
+    @Column()
+    sueldoDiario: number;
+
+    @Column()
+    telefonoOficina: number;
+
+    @Column()
+    sueldoMensual: number;
+
+    @Column()
+    ctaClave: number;
+
+    @Column()
+    imss: number;
     
     @Column()
     rfc: number;
     
     @Column()
-    numeroCedula: number;
-    
-    @Column()
-    detalleBaja: string;
-    
-    @Column()
-    fechaRegistroBaja: Date;
+    numeroCedula: number;*/
 
 }
