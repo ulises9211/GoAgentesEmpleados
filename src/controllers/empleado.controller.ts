@@ -11,18 +11,18 @@ import { EmpleadoVista } from "../entity/Vistas/empleadoVista";
         });
     }
 
-    const mostrarEmpleado = async( req, res) => {
+    /*const mostrarEmpleado = async( req, res) => {
         const empleado = await getRepository(EmpleadoVista).findOne({id: req.params.id});
         console.log(empleado);
         return res.send(empleado);
-    }
+    }*/
 
     const crearEmpleado = async( req, res) => {
-        const { nombre, nivel} = req.body;
+        const { nivel } = req.body;
 
         const empleado = new Empleado();
-        console.log(nombre, nivel);
-        // empleado.name = 'love';
+        empleado.Nombre = req.body.nombre;
+        console.log(empleado);
         // const categoriaFind = await getRepository(Category).findOne(req.params.categoryName);
         // empleado.category = categoriaFind;
         // const clasificacionFind = await getRepository(Clasificcion).findOne(req.params.clasificacionName);
@@ -30,9 +30,9 @@ import { EmpleadoVista } from "../entity/Vistas/empleadoVista";
         // const commentFind = await getRepository(Comments).findOne(req.params.scommentName);
         // empleado.comment = commentFind;
 
-        // const newUsuario = await getRepository(Post).create(empleado);
-        // console.log(newUsuario);
-        // const saveUsuario = await getRepository(Post).save(newUsuario);
+        const newUsuario = await getRepository(Empleado).create(empleado);
+        const saveUsuario = await getRepository(Empleado).save(newUsuario);
+        return res.send(saveUsuario);
     }
    
-export {mostrarEmpleados, crearEmpleado, mostrarEmpleado}
+export {mostrarEmpleados, crearEmpleado}
