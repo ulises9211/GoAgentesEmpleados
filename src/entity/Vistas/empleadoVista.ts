@@ -11,7 +11,20 @@ import { Pais } from "../Pais";
     expression: (connection: Connection) => connection.createQueryBuilder()
         .select("empleado.id", "id")
         .addSelect("empleado.nombre", "nombre")
-        .addSelect("escolaridad.nivel", "nivel") 
+        .addSelect("empleado.apellidoPaterno", "apellidoPaterno")
+        .addSelect("empleado.apellidoMaterno", "apellidoMaterno")
+        .addSelect("empleado.fechaNacimiento", "fechaNacimiento")
+        .addSelect("empleado.email", "email")
+        .addSelect("empleado.curp", "curp")
+        .addSelect("empleado.genero", "genero")
+        .addSelect("empleado.cp", "cp")
+        //.addSelect("empleado.colonia", "colonia")
+        .addSelect("empleado.calle", "calle")
+        .addSelect("empleado.numeroExterior", "numeroExterior")
+        .addSelect("empleado.numeroInterior", "numeroInterior")
+        .addSelect("empleado.telefonoFijo", "telefonoFijo")
+        .addSelect("empleado.telefonoMovil", "telefonoMovil")
+        .addSelect("escolaridad.nivel", "nivel")
         .addSelect("estacion.lineas", "estacion") 
         .addSelect("estado_civil.descripcion", "estado_civil") 
         .addSelect("estado_escolaridad.nivel", "estado_escolaridad") 
@@ -33,6 +46,42 @@ export class EmpleadoVista {
 
     @ViewColumn()
     nombre: string;
+
+    @ViewColumn()
+    apellidoPaterno: string;
+
+    @ViewColumn()
+    apellidoMaterno: string;
+
+    @ViewColumn()
+    fechaNacimiento: Date;
+
+    @ViewColumn()
+    email: string;
+
+    @ViewColumn()
+    curp: string;
+
+    @ViewColumn()
+    genero: string;
+
+    @ViewColumn()
+    cp: string;
+
+    @ViewColumn()
+    calle: string;
+
+    @ViewColumn()
+    numeroExterior: string;
+
+    @ViewColumn()
+    numeroInterior: string;
+
+    @ViewColumn()
+    telefonoFijo;
+
+    @ViewColumn()
+    telefonoMovil;
 
     @ViewColumn()
     nivel: string;

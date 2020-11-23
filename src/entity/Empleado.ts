@@ -91,11 +91,11 @@ export class Empleado {
     @Column()
     numeroInterior: string;
 
-    @Column()
-    telefonoFijo: number;
+    @Column({type: "double"})
+    telefonoFijo;
 
-    @Column()
-    telefonoMovil: number;
+    @Column( {type: "double"})
+    telefonoMovil;
 
     @Column()
     fechaCreacion: Date;
