@@ -18,10 +18,10 @@ import { EmpleadoVista } from "../entity/Vistas/empleadoVista";
     }
 
     const crearEmpleado = async( req, res) => {
-        const { categoryName, clasificacionName, commentName} = req.body;
+        const { nombre, nivel} = req.body;
 
         const empleado = new Empleado();
-
+        console.log(nombre, nivel);
         // empleado.name = 'love';
         // const categoriaFind = await getRepository(Category).findOne(req.params.categoryName);
         // empleado.category = categoriaFind;
